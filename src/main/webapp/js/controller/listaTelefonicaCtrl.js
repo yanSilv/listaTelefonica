@@ -1,4 +1,4 @@
-angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($scope, $http, contatoAPI) {
+angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($scope, contatoAPI) {
     $scope.app = "Lista Telefonica";
     $scope.nome = "";
     $scope.telefone = "";

@@ -9,6 +9,9 @@
         <script src="js/app.js" charset="utf-8"></script>
         <script src="js/controller/listaTelefonicaCtrl.js" charset="utf-8"></script>
         <script src="js/services/contatoAPIServices.js" charset="utf-8"></script>
+        <script src="js/Config/configValue.js" charset="utf-8"></script>
+        <script src="js/filters/nameFilter.js" charset="utf-8"></script>        
+        <script src="js/filters/elipsis.js" charset="utf-8"></script>
     </head>
     <body ng-controller="listaTelefonicaCtrl">
         <div class="jumbotron">
@@ -25,7 +28,7 @@
                 </tr>
                 <tr ng-class="{selecionado: contato.selecionado}" ng-repeat="contato in contatos| filter: {nome: buscaNome} |orderBy: ordenar: decrescente">
                     <td><input type="checkbox" name="" value="" ng-model="contato.selecionado"></td>
-                    <td>{{contato.nome| uppercase}}</td>
+                    <td>{{contato.nome| uppercase | name| elipsis:15}}</td>
                     <td>{{contato.telefone}}</td>
                     <td>{{contato.operadora.nome}}</td>
                     <td>{{contato.data| date:'dd/MM/yyyy'}}</td>
