@@ -12,15 +12,19 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($s
     var carregaContatos = function () {
         contatoAPI.getContato().then(function successCallback(response) {
             $scope.contatos = response.data;
+        }, function errorCallback(response) {
+            $scope.error = "Não foi possivel carregar os dados";
         });
     };
     $scope.adicionarContato = function (contato) {
-        contato.data = new Date();
+        //contato.data = new Date();
         console.log(contato);
         contatoAPI.setContato(contato).then(function sucessCallback(response) {
             delete $scope.contato;
             $scope.contatoForm.$setPristine();
             carregaContatos();
+        }, function errorCallback(response) {
+            $scope.error = "Não foi possivel carregar os dados";
         });
         //console.log(contato);
         //$scope.contatos.push(angular.copy(contato));
@@ -34,6 +38,8 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($s
                 });
                 console.log(contato);
             }
+        }, function errorCallback(response) {
+            $scope.error = "Não foi possivel carregar os dados";
         });
         //$scope.contatos = contatos.filter(function (contato) {
         //    if (!contato.selecionado) {
